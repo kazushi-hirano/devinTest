@@ -46,7 +46,7 @@ HTML入門クイズシステムは、インターネットブラウザから利�
 
 ### トップページ（クイズ開始画面）
 
-![クイズ開始画面](/home/ubuntu/screenshots/html_quiz_app_020635.png)
+![クイズ開始画面](images/html_quiz_app_020635.png)
 
 システムにアクセスすると、上記のような画面が表示されます。
 
@@ -75,13 +75,13 @@ HTMLの基本知識を測定し、学習効果を確認します。
 
 **ステップ1: 問題を読む**
 
-![問題画面](/home/ubuntu/screenshots/html_quiz_app_020635.png)
+![問題画面](images/html_quiz_app_020635.png)
 
 画面中央に表示される問題文をよく読みます。この例では「HTMLの基本構造で、ページのタイトルを設定するタグはどれですか？」という問題が表示されています。
 
 **ステップ2: 選択肢から回答を選ぶ**
 
-![回答選択](/home/ubuntu/screenshots/html_quiz_app_020655.png)
+![回答選択](images/html_quiz_app_020655.png)
 
 4つの選択肢の中から正しいと思うものを1つクリックします。選択すると、選択肢が青い枠で囲まれ、「次へ」ボタンが有効になります。
 
@@ -96,11 +96,11 @@ HTMLの基本知識を測定し、学習効果を確認します。
 
 **ステップ4: 全問題を回答**
 
-![問題2](/home/ubuntu/screenshots/html_quiz_app_020715.png)
+![問題2](images/html_quiz_app_020715.png)
 
 同様の手順で問題2、問題3まで回答します。最後の問題では「次へ」ボタンが「結果を見る」ボタンに変わります。
 
-![問題3](/home/ubuntu/screenshots/html_quiz_app_020808.png)
+![問題3](images/html_quiz_app_020808.png)
 
 ### 5.2 結果の確認
 
@@ -111,7 +111,7 @@ HTMLの基本知識を測定し、学習効果を確認します。
 
 **ステップ1: 結果画面の表示**
 
-![結果画面](/home/ubuntu/screenshots/html_quiz_app_020824.png)
+![結果画面](images/html_quiz_app_020824.png)
 
 全問題に回答すると、結果画面が自動的に表示されます。
 
