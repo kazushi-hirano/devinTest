@@ -148,10 +148,73 @@ class HTMLQuiz {
         messageEl.style.marginTop = '15px';
         this.scoreTextEl.parentNode.appendChild(messageEl);
         
+        this.displayIncorrectAnswers();
+        
         this.resultContainerEl.classList.add('fade-in');
         setTimeout(() => {
             this.resultContainerEl.classList.remove('fade-in');
         }, 500);
+    }
+    
+    displayIncorrectAnswers() {
+        const incorrectQuestions = [];
+        
+        this.quizData.forEach((question, index) => {
+            if (this.userAnswers[index] !== question.correct) {
+                incorrectQuestions.push({
+                    questionNumber: index + 1,
+                    question: question.question,
+                    userAnswer: question.options[this.userAnswers[index]],
+                    correctAnswer: question.options[question.correct]
+                });
+            }
+        });
+        
+        if (incorrectQuestions.length > 0) {
+            const detailsContainer = document.createElement('div');
+            detailsContainer.style.marginTop = '20px';
+            detailsContainer.style.padding = '20px';
+            detailsContainer.style.backgroundColor = '#fef2f2';
+            detailsContainer.style.borderRadius = '10px';
+            detailsContainer.style.border = '1px solid #fecaca';
+            
+            const detailsTitle = document.createElement('h3');
+            detailsTitle.textContent = '間違った問題の詳細';
+            detailsTitle.style.color = '#dc2626';
+            detailsTitle.style.fontSize = '1.1rem';
+            detailsTitle.style.marginBottom = '15px';
+            detailsTitle.style.fontWeight = 'bold';
+            detailsContainer.appendChild(detailsTitle);
+            
+            incorrectQuestions.forEach(item => {
+                const questionDiv = document.createElement('div');
+                questionDiv.style.marginBottom = '15px';
+                questionDiv.style.padding = '10px';
+                questionDiv.style.backgroundColor = 'white';
+                questionDiv.style.borderRadius = '5px';
+                questionDiv.style.fontSize = '0.9rem';
+                
+                const questionText = document.createElement('p');
+                questionText.innerHTML = `<strong>問題${item.questionNumber}:</strong> ${item.question}`;
+                questionText.style.marginBottom = '8px';
+                questionText.style.color = '#374151';
+                
+                const userAnswerText = document.createElement('p');
+                userAnswerText.innerHTML = `<span style="color: #dc2626;">✗ あなたの回答:</span> ${item.userAnswer}`;
+                userAnswerText.style.marginBottom = '5px';
+                
+                const correctAnswerText = document.createElement('p');
+                correctAnswerText.innerHTML = `<span style="color: #059669;">✓ 正解:</span> ${item.correctAnswer}`;
+                correctAnswerText.style.marginBottom = '0';
+                
+                questionDiv.appendChild(questionText);
+                questionDiv.appendChild(userAnswerText);
+                questionDiv.appendChild(correctAnswerText);
+                detailsContainer.appendChild(questionDiv);
+            });
+            
+            this.scoreTextEl.parentNode.appendChild(detailsContainer);
+        }
     }
     
     restart() {
@@ -162,10 +225,9 @@ class HTMLQuiz {
         this.resultContainerEl.classList.add('hidden');
         this.quizContentEl.classList.remove('hidden');
         
-        const messageEl = this.scoreTextEl.parentNode.querySelector('p:last-child');
-        if (messageEl && messageEl.textContent.includes('素晴らしい') || messageEl.textContent.includes('よくできました') || messageEl.textContent.includes('もう少し') || messageEl.textContent.includes('HTMLの基本')) {
-            messageEl.remove();
-        }
+        const scoreDisplay = this.scoreTextEl.parentNode;
+        const elementsToRemove = scoreDisplay.querySelectorAll('p:not(#score-text):not(#percentage-text), div');
+        elementsToRemove.forEach(element => element.remove());
         
         this.displayQuestion();
     }
