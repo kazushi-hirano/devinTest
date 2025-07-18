@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML入門クイズ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML入門クイズ</h1>
+            <p>HTML の基本知識をテストしましょう！</p>
+        </header>
+
+        <main id="quiz-container">
+            <div id="quiz-content">
+                <div id="progress">
+                    <span id="question-number">1</span> / <span id="total-questions">3</span>
+                </div>
+                
+                <div id="question-container">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                
+                <div id="navigation">
+                    <button id="next-btn" disabled>次へ</button>
+                </div>
+            </div>
+
+            <div id="result-container" class="hidden">
+                <h2>クイズ完了！</h2>
+                <div id="score-display">
+                    <p id="score-text"></p>
+                    <p id="percentage-text"></p>
+                </div>
+                <button id="restart-btn">もう一度挑戦</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
