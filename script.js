@@ -160,12 +160,16 @@ class HTMLQuiz {
         const incorrectQuestions = [];
         
         this.quizData.forEach((question, index) => {
-            if (this.userAnswers[index] !== question.correct) {
+            if (this.userAnswers[index] !== undefined && this.userAnswers[index] !== question.correct) {
+                const userAnswerIndex = this.userAnswers[index];
+                const userAnswerText = question.options[userAnswerIndex] || 'Unknown';
+                const correctAnswerText = question.options[question.correct] || 'Unknown';
+                
                 incorrectQuestions.push({
                     questionNumber: index + 1,
                     question: question.question,
-                    userAnswer: question.options[this.userAnswers[index]],
-                    correctAnswer: question.options[question.correct]
+                    userAnswer: userAnswerText,
+                    correctAnswer: correctAnswerText
                 });
             }
         });
