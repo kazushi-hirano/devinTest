@@ -204,11 +204,19 @@ class HTMLQuiz {
                 questionText.style.color = '#374151';
                 
                 const userAnswerText = document.createElement('p');
-                userAnswerText.innerHTML = `<span style="color: #dc2626;">✗ あなたの回答:</span> ${item.userAnswer}`;
+                const userAnswerSpan = document.createElement('span');
+                userAnswerSpan.style.color = '#dc2626';
+                userAnswerSpan.textContent = '✗ あなたの回答: ';
+                userAnswerText.appendChild(userAnswerSpan);
+                userAnswerText.appendChild(document.createTextNode(item.userAnswer));
                 userAnswerText.style.marginBottom = '5px';
                 
                 const correctAnswerText = document.createElement('p');
-                correctAnswerText.innerHTML = `<span style="color: #059669;">✓ 正解:</span> ${item.correctAnswer}`;
+                const correctAnswerSpan = document.createElement('span');
+                correctAnswerSpan.style.color = '#059669';
+                correctAnswerSpan.textContent = '✓ 正解: ';
+                correctAnswerText.appendChild(correctAnswerSpan);
+                correctAnswerText.appendChild(document.createTextNode(item.correctAnswer));
                 correctAnswerText.style.marginBottom = '0';
                 
                 questionDiv.appendChild(questionText);
